@@ -1,0 +1,79 @@
+body {
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--clr-main);
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    background-color: var(--clr-white);
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    padding: 2rem;
+    width: 40rem;
+}
+
+.container h2 {
+    /* background-color: black; */
+    color: var(--clr-main);
+    text-align: center;
+    margin-bottom: 0.7rem;
+}
+
+.container form {
+    width: 100%;
+}
+
+.container form > input {
+    width: 100%;
+    height: 2.7rem;
+    padding: 0.7rem;
+    margin-bottom: 0.7rem;
+    border: 1px solid var(--clr-gray);
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+.container form #botones {
+    display: flex;
+    flex-direction: column;
+}
+
+.container form #botones input {
+    border: none;
+    background-color: var(--clr-main);
+    color: var(--clr-white);
+    padding: 0.7rem;
+    border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -ms-border-radius: 7px;
+    -o-border-radius: 7px;
+    transition: background 0.3s ease;
+    -webkit-transition: background 0.3s ease;
+    -moz-transition: background 0.3s ease;
+    -ms-transition: background 0.3s ease;
+    -o-transition: background 0.3s ease;
+}
+
+.container form #botones input:first-of-type {
+    margin-bottom: 0.5rem;
+}
+
+.container form #botones input:hover {
+    background-color: var(--clr-main-light);
+}
+
+.container form .error-message {
+    color: red;
+    margin-bottom: 0.7rem;
+}
