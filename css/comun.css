@@ -47,6 +47,7 @@ a {
 /*COMUN MAIN/CARRITO*/
 .header-mobile, #close-menu {
     display: none;
+    cursor: pointer;
 }
 
 .contenedor {

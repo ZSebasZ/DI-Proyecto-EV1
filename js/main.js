@@ -5,15 +5,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 const url_productos = "./js/productos.json";
 let idFiltroAnterior = "todos";
-let numeritoProductos = document.querySelector("#numerito")
 
-const cargarCarrito = () => {
-    if(localStorage.getItem("totalProductosCarrito") != null){
-        numeritoProductos.textContent = localStorage.getItem("totalProductosCarrito")
-    }
-}
-
-const agregarProductoCarrito = (idProducto, tituloProducto, precioProducto, imgProducto) => {
+const agregarProductoCarrito = (idProducto, tituloProducto, imgProducto, precioProducto) => {
     let carrito = [];
 
     let productoAgregado = {

@@ -1,5 +1,6 @@
 let regexNombre = /^[a-zA-ZñÑáÁéÉíÍóÓúÚ]{1,}$/;
 let regexPassword = /^[a-zA-ZñÑáÁéÉíÍóÓúÚ0-9·$%&/().]{8,16}$/;
+let numeritoProductos = document.querySelector("#numerito")
 
 const mostrarError = (idError, mensajeError) => {
     let errorContainer = document.querySelector(idError)
@@ -39,6 +40,21 @@ const abrirCerrarMenu = (accion) => {
     }
 }
 
+const cargarCarrito = () => {
+    if(localStorage.getItem("totalProductosCarrito") != null){
+        numeritoProductos.textContent = localStorage.getItem("totalProductosCarrito")
+        return true;
+    } else {
+        return false;
+    }
+}
+
+const cerrarSesion = () => {
+    localStorage.removeItem("carrito");
+    localStorage.removeItem("totalProductosCarrito");
+    location.assign("./index.html");
+}
+
 let btnOpenMenu = document.querySelector("#open-menu");
 btnOpenMenu.addEventListener("click", () => {
     abrirCerrarMenu("abrir")
@@ -47,4 +63,10 @@ btnOpenMenu.addEventListener("click", () => {
 let btnCloseMenu = document.querySelector("#close-menu");
 btnCloseMenu.addEventListener("click", () => {
     abrirCerrarMenu("cerrar")
+});
+
+//Arroja un error en index.html
+let btnVolverAlInicio = document.querySelectorAll(".logo");
+btnVolverAlInicio.forEach(btn => {
+    btn.addEventListener("click", cerrarSesion);
 })
