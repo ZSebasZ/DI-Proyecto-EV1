@@ -213,9 +213,9 @@ body {
     }
 
     .contenedor .aside-visible .menu .boton-carrito {
-        
+
     }
-    
+
 }
 
 @media screen and (min-width: 400px) and (max-width: 600px) {
@@ -246,15 +246,25 @@ body {
         grid-template-columns: 1fr;
     }
 
-    .contenedor::before {
+    #fondoMenuAbierto {
         position: absolute;
         top: 0;
         left: 0;
-        z-index: 900;
+        z-index: -1000;
+        min-width: 400px;
         width: 100%;
         height: 100vh;
-        background-color: rgba(0, 0, 0, 0.486);
-        /* content: ""; */
+        background-color: rgba(0, 0, 0, 0);
+        transition: background 0.5s ease;
+        -webkit-transition: background 0.5s ease;
+        -moz-transition: background 0.5s ease;
+        -ms-transition: background 0.5s ease;
+        -o-transition: background 0.5s ease;
+}
+
+    #fondoMenuAbierto.activo {
+        z-index: 900 !important;
+        background-color: rgba(0, 0, 0, 0.5);
     }
 
     .contenedor main .contenedor-productos {
@@ -264,13 +274,18 @@ body {
     .contenedor .aside-visible {
         position: absolute;
         top: 0;
-        right: 100%; /*Lo oculto*/
+        left: -15rem;
         z-index: 1000;
         background-color: var(--clr-main);
         padding: 2.5rem 1rem 1rem 1rem;
         height: 100vh;
         width: 15rem;
-    }
+        transition: left 0.5s ease;
+        -webkit-transition: left 0.5s ease;
+        -moz-transition: left 0.5s ease;
+        -ms-transition: left 0.5s ease;
+        -o-transition: left 0.5s ease;
+}
 
     .contenedor .aside-visible #close-menu {
         display: block;
@@ -290,7 +305,7 @@ body {
         gap: 0.7rem;
     }
 
-    
+
 }
 
 @media screen and (max-width: 400px) {
@@ -314,22 +329,32 @@ body {
     }
 
     body {
-        /* position: fixed */
+        /* position: fixed; */
     }
 
     .contenedor {
         grid-template-columns: 1fr;
     }
 
-    .contenedor::before {
+    #fondoMenuAbierto {
         position: absolute;
         top: 0;
         left: 0;
-        z-index: 900;
+        z-index: -1000;
+        min-width: 400px;
         width: 100%;
         height: 100vh;
-        background-color: rgba(0, 0, 0, 0.486);
-        /*content: "";*/
+        background-color: rgba(0, 0, 0, 0);
+        transition: background 0.5s ease;
+        -webkit-transition: background 0.5s ease;
+        -moz-transition: background 0.5s ease;
+        -ms-transition: background 0.5s ease;
+        -o-transition: background 0.5s ease;
+}
+
+    #fondoMenuAbierto.activo {
+        z-index: 900 !important;
+        background-color: rgba(0, 0, 0, 0.5);
     }
 
     .contenedor main .contenedor-productos {
@@ -340,12 +365,18 @@ body {
         position: absolute;
         top: 0;
         right: 100%;
-        z-index: 1000;
+        /*left: 0;
+        */z-index: 1000;
         background-color: var(--clr-main);
         padding: 2.5rem 1rem 1rem 1rem;
         height: 100vh;
         width: 15rem;
-    }
+        transition: left 0.5s ease;
+        -webkit-transition: left 0.5s ease;
+        -moz-transition: left 0.5s ease;
+        -ms-transition: left 0.5s ease;
+        -o-transition: left 0.5s ease;
+}
 
     .contenedor .aside-visible #close-menu {
         display: block;

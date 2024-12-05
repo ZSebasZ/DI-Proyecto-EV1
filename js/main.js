@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     buscarProductos(url_productos);
+    cargarCarrito();
 });
 
 const url_productos = "./js/productos.json";
@@ -7,48 +8,48 @@ let idFiltroAnterior = "todos";
 let numeritoProductos = document.querySelector("#numerito")
 
 const cargarCarrito = () => {
-    if(localStorage){
-        console.log("vacio");
+    if(localStorage.getItem("totalProductosCarrito") != null){
+        numeritoProductos.textContent = localStorage.getItem("totalProductosCarrito")
     }
 }
 
 const agregarProductoCarrito = (idProducto, tituloProducto, precioProducto, imgProducto) => {
+    let carrito = [];
+
+    let productoAgregado = {
+        id: idProducto,
+        info: {
+            titulo: tituloProducto,
+            img: imgProducto,
+            precio: precioProducto,
+            cantidad: 1
+        }
+    };
+
     if(localStorage.getItem("carrito") == null){
-        //let carrito = [[[idProducto, tituloProducto, imgProducto, precioProducto, 1],["movil-02", tituloProducto, imgProducto, precioProducto, 1]],1]
-        let productoAgregado = {
-            id: idProducto,
-            info: {
-                titulo: tituloProducto,
-                img: imgProducto,
-                precio: precioProducto,
-                cantidad: 1
-            }
+        carrito.push(productoAgregado);
+
+        localStorage.setItem("carrito", JSON.stringify(carrito))
+        localStorage.setItem("totalProductosCarrito", 1)
+    } else {
+        carrito = JSON.parse(localStorage.getItem("carrito"))
+
+        let productoAnadido = carrito.find(producto => producto.id == idProducto)
+        if(productoAnadido != undefined) {
+            productoAnadido.info.cantidad += 1;
+            console.log(carrito);
+        } else {
+            carrito.push(productoAgregado)
+            console.log(carrito);
         }
 
-        let carrito = []
-        carrito.push(productoAgregado)
-        carrito.push(productoAgregado)
-        carrito.push(productoAgregado)
-        carrito.push(total = {totalProductos: 1})
         localStorage.setItem("carrito", JSON.stringify(carrito))
-    } else {
-        let carritoActual = JSON.parse(localStorage.getItem("carrito"))
-        console.log(carritoActual);
-        //if(carritoActual[0].)
-        
-        //if(localStorage.getItem("carrito"))
-        // let cantidadActual = parseInt(localStorage.getItem("carrito").split(",")[1]) + 1
-        // console.log(cantidadActual);
-        // localStorage.setItem("carrito", [
-        //     [idProducto, tituloProducto, imgProducto, precioProducto, cantidadActual],
-        //     cantidadActual
-        // ])
-    }
 
-    let cantidadProductosActuales = parseInt(numeritoProductos.textContent)
-    cantidadProductosActuales += 1;
-    numeritoProductos.textContent = cantidadProductosActuales;
-    
+        let cantidadProductosTotales = parseInt(localStorage.getItem("totalProductosCarrito"))
+        cantidadProductosTotales += 1;
+        numeritoProductos.textContent = cantidadProductosTotales;
+        localStorage.setItem("totalProductosCarrito", cantidadProductosTotales)
+    }
 }
 
 const agregarProductos = (productos, filtro) => {
@@ -121,6 +122,13 @@ const actualizarFiltroActivo = (nuevoFiltro) => {
         
         idFiltroAnterior = nuevoFiltro;
     }
+
+    //Cerrar menu lateral cuando se filtra
+    /*
+    if(document.querySelector("#fondoMenuAbierto").classList.contains("activo")){
+        abrirCerrarMenu("cerrar");
+    }
+    */
 };
 
 let btnFiltroTodos = document.querySelector("#todos");
