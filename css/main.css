@@ -34,6 +34,11 @@ body {
     gap: 0.7rem;
 }
 
+.contenedor main .contenedor-productos .producto {
+    display: flex;
+    flex-direction: column;
+}
+
 .contenedor main .contenedor-productos .producto .producto-imagen {
     width: 100%;
     border-radius: 10px;
@@ -44,12 +49,15 @@ body {
 }
 
 .contenedor main .contenedor-productos .producto .producto-detalles {
+    display: flex;
+    flex-direction: column;
     background-color: var(--clr-main);
     position: relative;
     top: -1.4rem;
     border-radius: 10px;
     padding: 0.4rem;
     margin-bottom: -1.4rem;
+    height: 100%;
     color: var(--clr-white);
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
@@ -77,6 +85,7 @@ body {
     color: var(--clr-main);
     background-color: var(--clr-white);
     padding: 0.3rem;
+    margin-top: auto;
     cursor: pointer;
     border-radius: 20px;
     -webkit-border-radius: 20px;
