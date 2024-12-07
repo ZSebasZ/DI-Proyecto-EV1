@@ -1,7 +1,11 @@
+//Expresiones regulares para login.html (validaciones)
 let regexNombre = /^[a-zA-ZñÑáÁéÉíÍóÓúÚ]{1,}$/;
 let regexPassword = /^[a-zA-ZñÑáÁéÉíÍóÓúÚ0-9·$%&/().]{8,16}$/;
+
+//Elemento html "numerito" que indica el numero de productos en el carrito
 let numeritoProductos = document.querySelector("#numerito")
 
+//Funcion para mostrar errores de validacion en el formulario de login.html
 const mostrarError = (idError, mensajeError) => {
     let errorContainer = document.querySelector(idError)
     errorContainer.innerHTML = mensajeError
@@ -12,6 +16,7 @@ const mostrarError = (idError, mensajeError) => {
     }
 }
 
+//Funcion para limpiar los campos del formulario y mensajes de error
 const limpiarCampos = () => {
     formulario.reset();
     let errors = document.querySelectorAll(".error-message");
@@ -20,6 +25,7 @@ const limpiarCampos = () => {
     });
 }
 
+//Funcion para desplegar y cerrar el menú lateral en pantallas pequeñas
 const abrirCerrarMenu = (accion) => {
     let body = document.querySelector("body");
     let menu = document.querySelector(".contenedor .aside-visible");
@@ -40,6 +46,11 @@ const abrirCerrarMenu = (accion) => {
     }
 }
 
+/*
+Funcion que carga el numero total de productos en el carrito
+y lo establece en el elemento correspondiente 
+usando la variable "numeritoProductos"
+*/
 const cargarCarrito = () => {
     if(localStorage.getItem("totalProductosCarrito") != null){
         numeritoProductos.textContent = localStorage.getItem("totalProductosCarrito")
@@ -49,22 +60,26 @@ const cargarCarrito = () => {
     }
 }
 
+//Funcion que simula el cierre se sesion limpiado el carrito por completo
 const cerrarSesion = () => {
     localStorage.removeItem("carrito");
     localStorage.removeItem("totalProductosCarrito");
     location.assign("./index.html");
 }
 
+//Asignacion de evento al boton que abre el menu lateral
 let btnOpenMenu = document.querySelector("#open-menu");
 btnOpenMenu.addEventListener("click", () => {
     abrirCerrarMenu("abrir")
 })
 
+//Asignacion de evento al boton que cierra el menu lateral
 let btnCloseMenu = document.querySelector("#close-menu");
 btnCloseMenu.addEventListener("click", () => {
     abrirCerrarMenu("cerrar")
 });
 
+//Asignacion de evento al titulo de main.html y carrito.html para volver a index.html
 //Arroja un error en index.html
 let btnVolverAlInicio = document.querySelectorAll(".logo");
 btnVolverAlInicio.forEach(btn => {
