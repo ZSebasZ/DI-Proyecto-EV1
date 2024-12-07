@@ -1,9 +1,11 @@
+/*Estilos para el body*/
 body {
     background-color: var(--clr-main);
     padding: 0.7rem;
     width: 100%;
 }
 
+/*Estilos para la seccion main (especificos de main.html, no comunes con carrito.html)*/
 .contenedor main .contenedor-productos {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -70,6 +72,7 @@ body {
     -o-border-radius: 20px;
 }
 
+/*Estilos para la seccion aside (especificos de main.html, no comunes con carrito.html)*/
 .contenedor .aside-visible .menu .boton-categoria {
     display: flex;
     align-items: center;

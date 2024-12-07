@@ -1,11 +1,17 @@
+/*
+Asignacion de evento al documento para que cuando cargue todo,
+cargue los productos y cargue el numero de productos que tiene en el carrito
+*/
 document.addEventListener("DOMContentLoaded", () => {
     buscarProductos(url_productos);
     cargarCarrito();
 });
 
+//Contante de la ruta a los productos y el filtro anterior de los productos
 const url_productos = "./js/productos.json";
 let idFiltroAnterior = "todos";
 
+//Funcion para agregar productos al carrito e ir guardandolos en el localStorage
 const agregarProductoCarrito = (idProducto, tituloProducto, imgProducto, precioProducto) => {
     let carrito = [];
 
@@ -24,6 +30,8 @@ const agregarProductoCarrito = (idProducto, tituloProducto, imgProducto, precioP
 
         localStorage.setItem("carrito", JSON.stringify(carrito))
         localStorage.setItem("totalProductosCarrito", 1)
+
+        numeritoProductos.textContent = localStorage.getItem("totalProductosCarrito");
     } else {
         carrito = JSON.parse(localStorage.getItem("carrito"))
 
@@ -45,6 +53,7 @@ const agregarProductoCarrito = (idProducto, tituloProducto, imgProducto, precioP
     }
 }
 
+//Funcion para cargar los productos segun el filtro aplicado
 const agregarProductos = (productos, filtro) => {
     let contenedorProductos = document.querySelector("#contenedor-productos");
     contenedorProductos.innerHTML = "";
@@ -56,6 +65,7 @@ const agregarProductos = (productos, filtro) => {
     });
 };
 
+//Funcion que crea un elemento HTML con toda la info del producto
 const crearProducto = (producto) => {
     let contenedorProducto = document.createElement("div");
     contenedorProducto.className = "producto";
@@ -93,6 +103,10 @@ const crearProducto = (producto) => {
     return contenedorProducto;
 };
 
+/*
+Funcion que realiza la peticion AJAX para obtener todos los productos de productos.json
+y luego llamar a la funcion agregarProductos()
+*/
 const buscarProductos = (url, filtro = "todo") => {
     fetch(url)
         .then((res) => {
@@ -100,11 +114,15 @@ const buscarProductos = (url, filtro = "todo") => {
             return res.json();
         })
         .then((data) => {
-            console.log(data);
+            //console.log(data);
             agregarProductos(data, filtro)
         });
 };
 
+/*
+Funcion que actualiza el filtro de los productos
+y cambia el estilo del elemento que esta activo en el filtro y del que estaba
+*/
 const actualizarFiltroActivo = (nuevoFiltro) => {
     if (idFiltroAnterior != nuevoFiltro) {
         let filtroAnterior = document.getElementById(idFiltroAnterior);
@@ -124,24 +142,28 @@ const actualizarFiltroActivo = (nuevoFiltro) => {
     */
 };
 
+//Asignacion de evento al boton del filtro "todos"
 let btnFiltroTodos = document.querySelector("#todos");
 btnFiltroTodos.addEventListener("click", () => {
     buscarProductos(url_productos);
     actualizarFiltroActivo("todos");
 })
 
+//Asignacion de evento al boton del filtro "moviles"
 let btnFiltroMoviles = document.querySelector("#moviles");
 btnFiltroMoviles.addEventListener("click", () => {
     buscarProductos(url_productos, "moviles");
     actualizarFiltroActivo("moviles");
 })
 
+//Asignacion de evento al boton del filtro "portatiles"
 let btnFiltroPortatiles = document.querySelector("#portatiles");
 btnFiltroPortatiles.addEventListener("click", () => {
     buscarProductos(url_productos, "portatiles");
     actualizarFiltroActivo("portatiles");
 })
 
+//Asignacion de evento al boton del filtro "televisiones"
 let btnFiltroTelevisores = document.querySelector("#televisiones");
 btnFiltroTelevisores.addEventListener("click", () => {
     buscarProductos(url_productos, "televisiones");

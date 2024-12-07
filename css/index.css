@@ -1,3 +1,4 @@
+/*Estilos para el body*/
 body {
     width: 100vw;
     height: 100vh;
@@ -8,6 +9,7 @@ body {
     align-items: center;
 }
 
+/*Estilos para el contenedor general*/
 .container {
     background-color: var(--clr-white);
     border-radius: 15px;
@@ -20,12 +22,12 @@ body {
 }
 
 .container h2 {
-    /* background-color: black; */
     color: var(--clr-main);
     text-align: center;
     margin-bottom: 0.7rem;
 }
 
+/*Estilos para el formulario*/
 .container form {
     width: 100%;
 }

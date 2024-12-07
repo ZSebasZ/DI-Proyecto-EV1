@@ -1,13 +1,19 @@
+/*Estilos para el body*/
 body {
     background-color: var(--clr-main);
     padding: 0.7rem;
     width: 100%;
 }
 
+/*
+Estilos para ocultar mensajes en caso de que 
+el carrito esté vacio o lo hayan comprado
+*/
 #carrito-vacio, #carrito-comprado {
     display: none;
 }
 
+/*Estilos para la seccion main (especificos de carrito.html, no comunes con main.html)*/
 .contenedor main .contenedor-carrito > p {
     color: var(--clr-main);
 }
@@ -78,8 +84,6 @@ body {
     -ms-transition: background 0.5s ease, color 0.5s ease;
     -o-transition: background 0.5s ease, color 0.5s ease;
 }
-
-
 
 .contenedor main .contenedor-carrito .carrito-productos .carrito-producto .carrito-producto-comprar {
     color: var(--clr-green);
@@ -173,6 +177,7 @@ body {
     -o-border-radius: 0 15px 15px 0;
 }
 
+/*Estilos para la seccion aside (especificos de carrito.html, no comunes con main.html)*/
 .contenedor .aside-visible .menu li:first-of-type a {
     display: flex;
     align-items: center;
@@ -182,6 +187,10 @@ body {
     margin-top: 1.5rem;
 }
 
+/*
+Media querys para ocultar el bloque del subtotal de cada producto
+y ajustar los elementos segun el tamaño de la pantalla
+*/
 @media screen and (min-width: 600px) and (max-width: 675px) {
     .contenedor main .contenedor-carrito .carrito-productos .carrito-producto .carrito-producto-subtotal {
         display: none;

@@ -1,5 +1,8 @@
+/*
+Asignacion de evento al documento para que cuando cargue todo,
+cargue los productos del carrito y cargue el numero de productos que tiene en el carrito
+*/
 document.addEventListener("DOMContentLoaded", () => {
-    //buscarProductos(url_productos);
     let hayProductos = cargarCarrito();
     if(hayProductos == false) {
         document.querySelector("#carrito-productos").style.display = "none";
@@ -9,8 +12,16 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
+//Variable que obtiene los productos segun el localStorage
 let carritoCompra = JSON.parse(localStorage.getItem("carrito"))
 
+/*
+Funcion para comprar o eliminar el producto,
+pero como es una simulacion siempre se va a eliminar,
+lo unico que cambia es el mensaje de alerta y
+el mensaje que se muestra si compra o elimina
+el unico producto que hay en el carrito
+*/
 const comprarEliminarProducto = (accion, idProducto) => {
     let mensaje = "";
     if(accion == "comprar") {
@@ -30,8 +41,6 @@ const comprarEliminarProducto = (accion, idProducto) => {
         let contenedorCarritoAcciones = document.querySelector("#carrito-acciones");
 
         totalPrecio.textContent = `$${parseInt(totalPrecio.textContent.substring(1,)) - (productoAComprarEliminar.info.cantidad * productoAComprarEliminar.info.precio)}`
-
-        
 
         localStorage.setItem("carrito", JSON.stringify(nuevoCarritoCompra))
         localStorage.setItem("totalProductosCarrito", productosCarrito)
@@ -54,6 +63,7 @@ const comprarEliminarProducto = (accion, idProducto) => {
     }
 }
 
+//Funcion que carga todos los productos del carrito y los muestra
 const cargarProductosCarrito = () => {
     let contenedorProductos = document.querySelector("#carrito-productos");
     let contenedorCarritoAcciones = document.querySelector("#carrito-acciones");
@@ -136,29 +146,38 @@ const cargarProductosCarrito = () => {
     contenedorCarritoAcciones.style.display = "flex";
 }
 
+//Funcion para vaciar todo el carrito
 const vaciarCarrito = () => {
     let vaciar = confirm("¿Estas seguro que quieres eliminar todos los productor del carrito?")
     if(vaciar) {
-        localStorage.removeItem("carrito");
-        localStorage.removeItem("totalProductosCarrito");
-        document.querySelector("#carrito-productos").style.display = "none";
-        document.querySelector("#carrito-vacio").style.display = "block";
-        numeritoProductos.textContent = 0;
+        borrarAlEliminarComprarCarrito("#carrito-vacio");
     }
 }
 
+//Funcion que simula comprar comprar todo el carrito
 const comprarTodoCarrito = () => {
     let comprar = confirm(`¿Estas seguro que quieres comprar todos los productos por un total de ${document.querySelector("#Total").textContent}?`) 
     if(comprar) {
-        localStorage.removeItem("carrito");
-        localStorage.removeItem("totalProductosCarrito");
-        document.querySelector("#carrito-productos").style.display = "none";
-        document.querySelector("#carrito-comprado").style.display = "block";
+        borrarAlEliminarComprarCarrito("#carrito-comprado");
     }
 }
 
+/*
+Funcion comun para vaciarCarrito() y comprarTodoCarrito()
+que simula vaciar o comprar el carrito, eliminando las variables del localStorage
+*/
+const borrarAlEliminarComprarCarrito = (idMensaje) => {
+    localStorage.removeItem("carrito");
+        localStorage.removeItem("totalProductosCarrito");
+        document.querySelector("#carrito-productos").style.display = "none";
+        document.querySelector(idMensaje).style.display = "block";
+        numeritoProductos.textContent = 0;
+}
+
+//Asignacion de evento al boton de vaciar carrito
 let btnVaciarCarrito = document.querySelector(".carrito-acciones-vaciar");
 btnVaciarCarrito.addEventListener("click", vaciarCarrito);
 
+//Asignacion de evento al boton de comprar todo el carrito
 let btnComprarTodoCarrito = document.querySelector(".carrito-acciones-comprar");
 btnComprarTodoCarrito.addEventListener("click", comprarTodoCarrito);

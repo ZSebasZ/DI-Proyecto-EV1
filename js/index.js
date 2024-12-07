@@ -1,3 +1,4 @@
+//Funcion que realiza la validacion del nombre
 const validarNombre = () => {
     let nombre = inputNombre.value.trim();
     if (nombre.length == 0) {
@@ -15,6 +16,7 @@ const validarNombre = () => {
     }
 }
 
+//Funcion que realiza la validacion de la contraseña
 const validarPassword = () => {
     let password = inputPassword.value.trim();
     if (password.length == 0) {
@@ -29,6 +31,10 @@ const validarPassword = () => {
     }
 }
 
+/*
+Asignacion de evento al formulario cuando sea enviado y 
+realice la validacion de los campos
+*/
 let formulario = document.querySelector("#formulario")
 formulario.addEventListener("submit", (event) => {
     if (!validarNombre() || !validarPassword()) {
@@ -36,11 +42,14 @@ formulario.addEventListener("submit", (event) => {
     }
 });
 
+//Asignacion de evento al campo del nombre para validarlo
 let inputNombre = document.querySelector("#nombre");
 inputNombre.addEventListener("blur", validarNombre);
 
+//Asignacion de evento al campo de la contraseña para validarla
 let inputPassword = document.querySelector("#password");
 inputPassword.addEventListener("blur", validarPassword);
 
+//Asignacion de evento al boton de limpiar campos para limpiar todo el formulario
 let inputLimpiar = document.querySelector("#limpiar");
 inputLimpiar.addEventListener("click", limpiarCampos);

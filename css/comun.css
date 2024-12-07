@@ -1,3 +1,4 @@
+/*Estilos comunes para todas las paginas de la web*/
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap');
 
 :root {
@@ -44,7 +45,8 @@ a {
     font-size: .85rem;
 }
 
-/*COMUN MAIN/CARRITO*/
+/*Estilos comunes para las paginas main.html y carrito.html*/
+/*Estilos para la seccion header*/
 .header-mobile, #close-menu {
     display: none;
     cursor: pointer;
@@ -56,6 +58,7 @@ a {
     column-gap: 1.5rem;
 }
 
+/*Estilos para la seccion main*/
 .contenedor main {
     background-color: var(--clr-white);
     padding: 2rem;
@@ -71,6 +74,7 @@ a {
     margin-bottom: 1.5rem;
 }
 
+/*Estilos para la seccion aside*/
 .contenedor .aside-visible {
     height: calc(100vh - 1.7rem);
     position: sticky;
@@ -148,6 +152,10 @@ a {
     -o-border-radius: 3px;
 }
 
+/*
+Media querys para la responsividad de la web.
+4 tamaños de pantalla (850px, 675px, 600px y 400px)
+*/
 @media screen and (min-width: 675px) and (max-width: 850px) {
     .contenedor main .contenedor-productos {
         grid-template-columns: repeat(3, 1fr) !important;
@@ -169,11 +177,6 @@ a {
         width: fit-content;
         margin: 0.3rem auto 0 auto;
     }
-
-    .contenedor .aside-visible .menu .boton-carrito {
-
-    }
-
 }
 
 @media screen and (min-width: 400px) and (max-width: 600px) {
@@ -218,7 +221,7 @@ a {
         -moz-transition: background 0.5s ease;
         -ms-transition: background 0.5s ease;
         -o-transition: background 0.5s ease;
-}
+    }
 
     #fondoMenuAbierto.activo {
         z-index: 900 !important;
@@ -243,7 +246,7 @@ a {
         -moz-transition: left 0.5s ease;
         -ms-transition: left 0.5s ease;
         -o-transition: left 0.5s ease;
-}
+    }
 
     .contenedor .aside-visible #close-menu {
         display: block;
@@ -262,8 +265,6 @@ a {
         grid-template-columns: 1fr;
         gap: 0.7rem;
     }
-
-
 }
 
 @media screen and (max-width: 400px) {
@@ -308,7 +309,7 @@ a {
         -moz-transition: background 0.5s ease;
         -ms-transition: background 0.5s ease;
         -o-transition: background 0.5s ease;
-}
+    }
 
     #fondoMenuAbierto.activo {
         z-index: 900 !important;
@@ -322,9 +323,8 @@ a {
     .contenedor .aside-visible {
         position: absolute;
         top: 0;
-        right: 100%;
-        /*left: 0;
-        */z-index: 1000;
+        left: -15rem;
+        z-index: 1000;
         background-color: var(--clr-main);
         padding: 2.5rem 1rem 1rem 1rem;
         height: 100vh;
@@ -334,7 +334,7 @@ a {
         -moz-transition: left 0.5s ease;
         -ms-transition: left 0.5s ease;
         -o-transition: left 0.5s ease;
-}
+    }
 
     .contenedor .aside-visible #close-menu {
         display: block;
