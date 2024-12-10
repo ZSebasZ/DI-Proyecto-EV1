@@ -1,5 +1,5 @@
 //Expresiones regulares para login.html (validaciones)
-let regexNombre = /^[a-zA-ZñÑáÁéÉíÍóÓúÚ]{1,}$/;
+let regexNombre = /^[a-zA-ZñÑáÁéÉíÍóÓúÚüÜ\s]{1,}$/;
 let regexPassword = /^[a-zA-ZñÑáÁéÉíÍóÓúÚ0-9·$%&/().]{8,16}$/;
 
 //Elemento html "numerito" que indica el numero de productos en el carrito
