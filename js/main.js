@@ -25,7 +25,7 @@ const agregarProductoCarrito = (idProducto, tituloProducto, imgProducto, precioP
         }
     };
 
-    if(localStorage.getItem("carrito") == null){
+    if (localStorage.getItem("carrito") == null) {
         carrito.push(productoAgregado);
 
         localStorage.setItem("carrito", JSON.stringify(carrito))
@@ -36,12 +36,12 @@ const agregarProductoCarrito = (idProducto, tituloProducto, imgProducto, precioP
         carrito = JSON.parse(localStorage.getItem("carrito"))
 
         let productoAnadido = carrito.find(producto => producto.id == idProducto)
-        if(productoAnadido != undefined) {
+        if (productoAnadido != undefined) {
             productoAnadido.info.cantidad += 1;
-            console.log(carrito);
+            //console.log(carrito);
         } else {
             carrito.push(productoAgregado)
-            console.log(carrito);
+            //console.log(carrito);
         }
 
         localStorage.setItem("carrito", JSON.stringify(carrito))
@@ -124,13 +124,29 @@ Funcion que actualiza el filtro de los productos
 y cambia el estilo del elemento que esta activo en el filtro y del que estaba
 */
 const actualizarFiltroActivo = (nuevoFiltro) => {
+    let tituloZonaProductos = document.querySelector("#titulo-principal")
+    switch (nuevoFiltro) {
+        case "todos":
+            tituloZonaProductos.textContent = "Todos los productos";
+            break;
+        case "moviles":
+            tituloZonaProductos.textContent = "Móviles";
+            break;
+        case "portatiles":
+            tituloZonaProductos.textContent = "Portátiles";
+            break;
+        case "televisiones":
+            tituloZonaProductos.textContent = "Televisores";
+            break;
+    }
+
     if (idFiltroAnterior != nuevoFiltro) {
         let filtroAnterior = document.getElementById(idFiltroAnterior);
         filtroAnterior.classList.remove("active");
-        
+
         let filtroNuevo = document.getElementById(nuevoFiltro);
         filtroNuevo.classList.add("active");
-        
+
         idFiltroAnterior = nuevoFiltro;
     }
 

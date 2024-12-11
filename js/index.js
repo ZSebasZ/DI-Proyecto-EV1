@@ -8,7 +8,7 @@ const validarNombre = () => {
         mostrarError("#error-nombre", "Nombre inválido.")
         return false;
     } else if(nombre.length > 20) {
-        mostrarError("#error-nombre", "El nombre no puede tener más de 20 caracteres")
+        mostrarError("#error-nombre", "El nombre no puede tener más de 20 caracteres.")
         return false;
     }else {
         mostrarError("#error-nombre","")
