@@ -9,7 +9,7 @@ let numeritoProductos = document.querySelector("#numerito")
 const mostrarError = (idError, mensajeError) => {
     let errorContainer = document.querySelector(idError)
     errorContainer.innerHTML = mensajeError
-    if (errorContainer.innerHTML != ""){
+    if (errorContainer.innerHTML != "") {
         errorContainer.style.display = "block"
     } else {
         errorContainer.style.display = "none"
@@ -30,9 +30,9 @@ const abrirCerrarMenu = (accion) => {
     let body = document.querySelector("body");
     let menu = document.querySelector(".contenedor .aside-visible");
     let fondo = document.querySelector("#fondoMenuAbierto");
-    
-    if(accion == "abrir") {
-        body.style.position =  "fixed";
+
+    if (accion == "abrir") {
+        body.style.position = "fixed";
         fondo.classList.add("activo")
         menu.style.left = "0";
     } else {
@@ -52,7 +52,7 @@ y lo establece en el elemento correspondiente
 usando la variable "numeritoProductos"
 */
 const cargarCarrito = () => {
-    if(localStorage.getItem("totalProductosCarrito") != null){
+    if (localStorage.getItem("totalProductosCarrito") != null) {
         numeritoProductos.textContent = localStorage.getItem("totalProductosCarrito")
         return true;
     } else {
@@ -67,17 +67,20 @@ const cerrarSesion = () => {
     location.assign("./index.html");
 }
 
-//Asignacion de evento al boton que abre el menu lateral
-let btnOpenMenu = document.querySelector("#open-menu");
-btnOpenMenu.addEventListener("click", () => {
-    abrirCerrarMenu("abrir")
-})
 
-//Asignacion de evento al boton que cierra el menu lateral
-let btnCloseMenu = document.querySelector("#close-menu");
-btnCloseMenu.addEventListener("click", () => {
-    abrirCerrarMenu("cerrar")
-});
+if (document.querySelector("#open-menu") != null && document.querySelector("#close-menu") != null) {
+    //Asignacion de evento al boton que abre el menu lateral
+    let btnOpenMenu = document.querySelector("#open-menu");
+    btnOpenMenu.addEventListener("click", () => {
+        abrirCerrarMenu("abrir")
+    })
+
+    //Asignacion de evento al boton que cierra el menu lateral
+    let btnCloseMenu = document.querySelector("#close-menu");
+    btnCloseMenu.addEventListener("click", () => {
+        abrirCerrarMenu("cerrar")
+    });
+}
 
 //Asignacion de evento al titulo de main.html y carrito.html para volver a index.html
 //Arroja un error en index.html
