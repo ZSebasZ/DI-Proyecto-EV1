@@ -1,6 +1,6 @@
 //Expresiones regulares para login.html (validaciones)
 let regexNombre = /^[a-zA-ZñÑáÁéÉíÍóÓúÚüÜ\s]{1,}$/;
-let regexPassword = /^[a-zA-ZñÑáÁéÉíÍóÓúÚ0-9·$%&/().]{8,16}$/;
+let regexPassword = /^[a-zA-ZñÑáÁéÉíÍóÓúÚüÜ0-9·$%&/().]{8,16}$/;
 
 //Elemento html "numerito" que indica el numero de productos en el carrito
 let numeritoProductos = document.querySelector("#numerito")
@@ -83,7 +83,6 @@ if (document.querySelector("#open-menu") != null && document.querySelector("#clo
 }
 
 //Asignacion de evento al titulo de main.html y carrito.html para volver a index.html
-//Arroja un error en index.html
 let btnVolverAlInicio = document.querySelectorAll(".logo");
 btnVolverAlInicio.forEach(btn => {
     btn.addEventListener("click", cerrarSesion);

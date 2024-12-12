@@ -30,7 +30,7 @@ el carrito esté vacio o lo hayan comprado
 
 .contenedor main .contenedor-carrito .carrito-productos .carrito-producto {
     display: grid;
-    grid-template-columns: repeat(7, auto);
+    grid-template-columns: repeat(7, 1fr);
     column-gap: 0.7rem;
     align-items: center;
     background-color: var(--clr-gray);
@@ -198,7 +198,7 @@ y ajustar los elementos segun el tamaño de la pantalla
 
     .contenedor main .contenedor-carrito .carrito-productos .carrito-producto {
         column-gap: 0.4rem;
-        grid-template-columns: repeat(6, auto);
+        grid-template-columns: repeat(6, 1fr);
     }
 }
 
@@ -209,7 +209,7 @@ y ajustar los elementos segun el tamaño de la pantalla
 
     .contenedor main .contenedor-carrito .carrito-productos .carrito-producto {
         column-gap: 0.4rem;
-        grid-template-columns: repeat(6, auto);
+        grid-template-columns: repeat(6, 1fr);
     }
 
     .contenedor main .contenedor-carrito .carrito-productos .carrito-producto small {
@@ -228,6 +228,11 @@ y ajustar los elementos segun el tamaño de la pantalla
 @media screen and (max-width: 400px) {
     .contenedor main .contenedor-carrito .carrito-productos .carrito-producto .carrito-producto-subtotal {
         display: none;
+    }
+
+    .contenedor main .contenedor-carrito .carrito-productos .carrito-producto {
+        column-gap: 0.4rem;
+        grid-template-columns: repeat(6, 1fr);
     }
 
     .contenedor main .contenedor-carrito .carrito-productos .carrito-producto {

@@ -37,8 +37,9 @@ realice la validacion de los campos
 */
 let formulario = document.querySelector("#formulario")
 formulario.addEventListener("submit", (event) => {
-    if (!validarNombre() || !validarPassword()) {
-        event.preventDefault();
+    event.preventDefault();
+    if (validarNombre() && validarPassword()) {
+        location.assign("./main.html");
     }
 });
 
