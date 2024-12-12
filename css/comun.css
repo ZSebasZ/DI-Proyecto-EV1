@@ -23,6 +23,11 @@ html {
     font-size: 16px;
 }
 
+/*
+Con esto definimos que la pagina
+está hecha para dispositivos con una pantalla
+de minimo 400px de ancho
+*/
 body {
     min-width: 400px;
 }
@@ -154,7 +159,8 @@ a {
 
 /*
 Media querys para la responsividad de la web.
-4 tamaños de pantalla (850px, 675px, 600px y 400px)
+4 tamaños de pantalla (850px, 675px, 600px y 400px).
+El minimo es para una pantalla de 400px de ancho.
 */
 @media screen and (min-width: 675px) and (max-width: 850px) {
     .contenedor main .contenedor-productos {
